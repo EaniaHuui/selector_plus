@@ -25,12 +25,21 @@ start using the package.
 
 ## Usage
 
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+
+  chart_view:
+    git: https://github.com/EaniaHuui/selector_plus.git
 ```
+
+```dart
 import 'package:selector_plus/selector_plus.dart';
 ```
 
 比如我们需要监听的对象是`UserModel`
-```
+```dart
 SelectorPlus<UserController, UserModel>(
   selector: controller.data,
   builder: (context, value, child) {
@@ -51,18 +60,18 @@ SelectorPlus<UserController, UserModel>(
 )
 ```
 修改数据，然后刷新UI
-```
+```dart
 data.value?.name = 'Flutter';
 data.update();
 notifyListeners();
 ```
 或者
-```
+```dart
 data.value = UserModel(name: "Flutter", email: "123@xx.com");
 notifyListeners();
 ```
 当然，对数组类数据也进一步做了处理，具体使用如下：
-```
+```dart
 SelectorListPlus<UserController, UserModel>(
   selector: controller.list,
   builder: (context, value, child) {
@@ -80,23 +89,23 @@ SelectorListPlus<UserController, UserModel>(
 )
 ```
 修改数据更新UI
-```
+```dart
 list.value[index].name = 'Flutter';
 list.update();
 notifyListeners();
 ```
 或者
-```
+```dart
 list.value= [UserModel(name: "Flutter", email: "123@xxx.com")];
 notifyListeners();
 ```
 增加
-```
+```dart
 list.add(UserModel(name: "Flutter", email: "123@xx.com"));
 notifyListeners();
 ```
 删除
-```
+```dart
 list.remove(index);
 notifyListeners();
 ```
